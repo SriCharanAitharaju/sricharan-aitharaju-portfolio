@@ -22,7 +22,10 @@ import {
   Send,
   Sparkles,
 } from "lucide-react";
-import portrait from "@/assets/sricharan.jpg";
+import portraitAsset from "@/assets/sricharan-profile.jpeg.asset.json";
+import resumeAsset from "@/assets/sricharan-resume.pdf.asset.json";
+const portrait = portraitAsset.url;
+const resumeUrl = resumeAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
