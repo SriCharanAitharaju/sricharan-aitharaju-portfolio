@@ -22,10 +22,9 @@ import {
   Send,
   Sparkles,
 } from "lucide-react";
-import portraitAsset from "@/assets/sricharan-profile.jpeg.asset.json";
-import resumeAsset from "@/assets/sricharan-resume.pdf.asset.json";
+import portraitAsset from "@/assets/sricharan-profile-new.jpeg.asset.json";
+const resumeUrl = "https://drive.google.com/uc?export=download&id=18L5R-_1OxvgTEOU9W3VUulsKE48Iwsqp";
 const portrait = portraitAsset.url;
-const resumeUrl = resumeAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -233,7 +232,7 @@ function Navbar({
 
         <div className="flex items-center gap-2">
           <a
-            href="/resume.pdf"
+            href=resumeUrl
             download
             className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90 sm:inline-flex"
           >
@@ -265,7 +264,7 @@ function Navbar({
               </button>
             ))}
             <a
-              href="/resume.pdf"
+              href=resumeUrl
               download
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
             >
@@ -325,7 +324,7 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <a
-              href="/resume.pdf"
+              href=resumeUrl
               download
               className="inline-flex items-center gap-2 rounded-md border border-border bg-card/50 px-6 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:text-primary"
             >
