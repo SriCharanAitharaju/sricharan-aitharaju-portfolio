@@ -23,6 +23,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import portraitAsset from "@/assets/sricharan-profile-new.jpeg.asset.json";
+import { ChatWidget } from "@/components/ChatWidget";
 const resumeUrl = "https://drive.google.com/uc?export=download&id=18L5R-_1OxvgTEOU9W3VUulsKE48Iwsqp";
 const portrait = portraitAsset.url;
 
@@ -180,6 +181,7 @@ function Portfolio() {
       <Education />
       <Contact />
       <Footer />
+      <ChatWidget />
     </div>
   );
 }
