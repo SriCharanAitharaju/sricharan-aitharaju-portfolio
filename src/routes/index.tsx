@@ -58,9 +58,8 @@ const NAV = [
 
 const TITLES = [
   "VLSI Enthusiast",
-  "ECE Engineer",
-  "Embedded Developer",
-  "IoT Builder",
+  "ELECTRONICS AND COMMUNICATION ENGINEERING STUDENT",
+  "EMBEDDED SYSTEMS LEARNER",
 ];
 
 function useTypewriter(words: string[], speed = 80, pause = 1400) {
