@@ -59,7 +59,7 @@ const NAV = [
 const TITLES = [
   "VLSI Enthusiast",
   "ECE Engineer",
-  "Embedded Systems Developer",
+  "Embedded Developer",
   "IoT Builder",
 ];
 
