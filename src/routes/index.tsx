@@ -537,6 +537,7 @@ function Projects() {
     },
     {
       title: "Smart Railway Track Crack Detection System",
+      url: "https://github.com/SriCharanAitharaju/Railwaytrack-Crack-Detection-System-Using-TinkerCad",
       tags: ["Arduino", "IR Sensors", "Embedded Systems"],
       points: [
         "IR sensor-based prototype for real-time fault detection",
@@ -570,9 +571,9 @@ function Projects() {
         <SectionTitle kicker="03 — Projects" title="Selected Work" />
       </Reveal>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {projects.map((p, i) => (
-          <Reveal key={p.title} delay={i * 100}>
-            <article className="glass-card hover-lift group relative h-full overflow-hidden rounded-2xl p-7">
+        {projects.map((p, i) => {
+          const cardBody = (
+            <>
               <div
                 aria-hidden
                 className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/15 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
@@ -580,9 +581,15 @@ function Projects() {
               <div className="relative">
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <h3 className="font-display text-xl font-bold leading-tight">{p.title}</h3>
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border text-muted-foreground transition group-hover:border-primary/50 group-hover:text-primary">
-                    <ExternalLink className="h-4 w-4" />
-                  </span>
+                  {p.url ? (
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border text-muted-foreground transition group-hover:border-primary/50 group-hover:text-primary">
+                      <ExternalLink className="h-4 w-4" />
+                    </span>
+                  ) : (
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border text-muted-foreground transition group-hover:border-primary/50 group-hover:text-primary">
+                      <ExternalLink className="h-4 w-4" />
+                    </span>
+                  )}
                 </div>
                 <div className="mb-5 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
@@ -603,12 +610,34 @@ function Projects() {
                   ))}
                 </ul>
                 <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                  View Details <ArrowRight className="h-3 w-3" />
+                  {p.url ? (
+                    <>View Project <ArrowRight className="h-3 w-3" /></>
+                  ) : (
+                    <>View Details <ArrowRight className="h-3 w-3" /></>
+                  )}
                 </div>
               </div>
-            </article>
-          </Reveal>
-        ))}
+            </>
+          );
+          return (
+            <Reveal key={p.title} delay={i * 100}>
+              {p.url ? (
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-card hover-lift group relative block h-full overflow-hidden rounded-2xl p-7"
+                >
+                  {cardBody}
+                </a>
+              ) : (
+                <article className="glass-card hover-lift group relative h-full overflow-hidden rounded-2xl p-7">
+                  {cardBody}
+                </article>
+              )}
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );
