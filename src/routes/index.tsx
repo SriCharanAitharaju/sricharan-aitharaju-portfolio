@@ -537,6 +537,7 @@ function Projects() {
     },
     {
       title: "Smart Railway Track Crack Detection System",
+      url: "https://github.com/SriCharanAitharaju/Railwaytrack-Crack-Detection-System-Using-TinkerCad",
       tags: ["Arduino", "IR Sensors", "Embedded Systems"],
       points: [
         "IR sensor-based prototype for real-time fault detection",
