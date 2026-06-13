@@ -205,12 +205,12 @@ function Navbar({
         scrolled ? "glass-card border-b" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <button onClick={() => goTo("home")} className="flex items-center gap-2 font-bold">
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary/15 text-primary">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+        <button onClick={() => goTo("home")} className="flex min-w-0 items-center gap-2 font-bold">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary transition-transform hover:rotate-12">
             <Sparkles className="h-4 w-4" />
           </span>
-          <span className="hidden sm:inline">Sricharan<span className="text-primary">.</span></span>
+          <span className="truncate">Sricharan<span className="text-primary">.</span></span>
         </button>
 
         <nav className="hidden items-center gap-1 lg:flex">
