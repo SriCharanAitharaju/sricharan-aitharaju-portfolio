@@ -513,7 +513,7 @@ function Skills() {
                 {g.skills.map((s) => (
                   <span
                     key={s}
-                    className="rounded-md border border-border bg-background/40 px-3 py-1 text-xs text-foreground/80"
+                    className="rounded-md border border-border bg-background/40 px-3 py-1 text-xs text-foreground/80 transition hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
                   >
                     {s}
                   </span>
@@ -599,7 +599,7 @@ function Projects() {
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] font-medium text-primary"
+                      className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] font-medium text-primary transition hover:scale-105"
                     >
                       {t}
                     </span>
