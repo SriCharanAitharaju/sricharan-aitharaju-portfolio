@@ -405,7 +405,7 @@ function About() {
     { label: "Projects", value: "4" },
   ];
   return (
-    <section id="about" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="about" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="01 — About Me" title="Hardware × Software" />
       </Reveal>
@@ -495,7 +495,7 @@ function Skills() {
   ];
 
   return (
-    <section id="skills" className="relative mx-auto max-w-7xl px-6 py-24">
+    <section id="skills" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="02 — Skills" title="Technical Arsenal" />
       </Reveal>
@@ -570,7 +570,7 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="projects" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="03 — Projects" title="Selected Work" />
       </Reveal>
@@ -670,7 +670,7 @@ function Experience() {
     },
   ];
   return (
-    <section id="experience" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="experience" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="04 — Experience" title="Leadership & Involvement" />
       </Reveal>
@@ -721,7 +721,7 @@ function Achievements() {
   ];
 
   return (
-    <section id="achievements" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="achievements" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="05 — Recognition" title="Achievements & Certifications" />
       </Reveal>
@@ -790,7 +790,7 @@ function Education() {
     },
   ];
   return (
-    <section id="education" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="education" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="06 — Education" title="Academic Background" />
       </Reveal>
@@ -831,7 +831,7 @@ function Contact() {
     { Icon: MapPin, label: "Address", value: "Nacharam, Hyderabad", href: "#" },
   ];
   return (
-    <section id="contact" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="contact" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="07 — Contact" title="Let's Connect" />
       </Reveal>
