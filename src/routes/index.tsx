@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   Menu,
   X,
-  Download,
   ArrowRight,
   Linkedin,
   Github,
