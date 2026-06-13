@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import portraitAsset from "@/assets/sricharan-profile-new.jpeg.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
-const resumeUrl = "https://drive.google.com/uc?export=download&id=18L5R-_1OxvgTEOU9W3VUulsKE48Iwsqp";
+const resumeUrl = "https://drive.google.com/file/d/1J8blqYIfCdWulH8lvXGUX18DvsWH9o7D/view?usp=sharing";
 const portrait = portraitAsset.url;
 
 export const Route = createFileRoute("/")({
