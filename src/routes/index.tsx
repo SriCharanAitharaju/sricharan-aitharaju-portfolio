@@ -386,11 +386,11 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
 /* -------------------- SECTION HELPERS -------------------- */
 function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
   return (
-    <div className="mb-12 text-center">
-      <div className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+    <div className="mb-10 text-center sm:mb-12">
+      <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-primary sm:text-xs">
         {kicker}
       </div>
-      <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">{title}</h2>
+      <h2 className="font-display text-2xl font-bold sm:text-4xl lg:text-5xl">{title}</h2>
       <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-transparent via-primary to-transparent" />
     </div>
   );
