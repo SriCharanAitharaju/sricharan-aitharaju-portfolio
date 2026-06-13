@@ -235,14 +235,14 @@ function Navbar({
             href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90 sm:inline-flex"
+            className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:scale-105 hover:opacity-90 sm:inline-flex"
           >
             <ExternalLink className="h-4 w-4" />
             Resume
           </a>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="grid h-10 w-10 place-items-center rounded-md border border-border lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-md border border-border transition hover:border-primary/60 hover:text-primary lg:hidden"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
