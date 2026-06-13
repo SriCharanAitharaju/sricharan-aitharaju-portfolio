@@ -328,11 +328,12 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
             </button>
             <a
               href={resumeUrl}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-md border border-border bg-card/50 px-6 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:text-primary"
             >
-              <Download className="h-4 w-4" />
-              Download Resume
+              <ExternalLink className="h-4 w-4" />
+              View Resume
             </a>
           </div>
           <div className="mt-10 flex items-center gap-4">
