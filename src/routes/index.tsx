@@ -205,12 +205,12 @@ function Navbar({
         scrolled ? "glass-card border-b" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <button onClick={() => goTo("home")} className="flex items-center gap-2 font-bold">
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary/15 text-primary">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+        <button onClick={() => goTo("home")} className="flex min-w-0 items-center gap-2 font-bold">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary transition-transform hover:rotate-12">
             <Sparkles className="h-4 w-4" />
           </span>
-          <span className="hidden sm:inline">Sricharan<span className="text-primary">.</span></span>
+          <span className="truncate">Sricharan<span className="text-primary">.</span></span>
         </button>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -235,14 +235,14 @@ function Navbar({
             href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90 sm:inline-flex"
+            className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:scale-105 hover:opacity-90 sm:inline-flex"
           >
             <ExternalLink className="h-4 w-4" />
             Resume
           </a>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="grid h-10 w-10 place-items-center rounded-md border border-border lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-md border border-border transition hover:border-primary/60 hover:text-primary lg:hidden"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -284,7 +284,7 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden pt-28"
+      className="relative flex min-h-[100svh] items-center overflow-hidden pt-24 sm:pt-28"
       style={{ backgroundImage: "var(--gradient-hero)" }}
     >
       <div
@@ -298,29 +298,29 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
             "radial-gradient(ellipse at center, black 30%, transparent 70%)",
         }}
       />
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 lg:grid-cols-[1.3fr_1fr]">
-        <div className="animate-fade-up">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 sm:gap-12 sm:px-6 sm:py-16 lg:grid-cols-[1.3fr_1fr]">
+        <div className="order-2 animate-fade-up lg:order-1">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary">
             <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
             Open to VLSI & ECE Internships
           </div>
-          <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             Sricharan
             <br />
-            <span className="text-gradient">Aitharaju</span>
+            <span className="text-gradient-animated">Aitharaju</span>
           </h1>
-          <div className="mt-6 flex h-8 items-center text-xl font-medium text-foreground/80 sm:text-2xl">
+          <div className="mt-6 flex min-h-8 items-center text-base font-medium text-foreground/80 sm:text-2xl">
             <span>{typed}</span>
             <span className="caret" />
           </div>
-          <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
+          <p className="mt-6 max-w-xl text-sm text-muted-foreground sm:text-lg">
             Building at the intersection of hardware and intelligence — from RTL design to
             real-world sensor systems.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <button
               onClick={() => goTo("projects")}
-              className="group inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+              className="group inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:scale-105 hover:opacity-90 sm:px-6"
             >
               View My Work
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -329,13 +329,13 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-card/50 px-6 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:text-primary"
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-card/50 px-5 py-3 text-sm font-semibold text-foreground transition hover:scale-105 hover:border-primary/50 hover:text-primary sm:px-6"
             >
               <ExternalLink className="h-4 w-4" />
               View Resume
             </a>
           </div>
-          <div className="mt-10 flex items-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
             {[
               { Icon: Linkedin, href: "https://linkedin.com/in/sricharan-aitharaju", label: "LinkedIn" },
               { Icon: Github, href: "https://github.com/", label: "GitHub" },
@@ -348,7 +348,7 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card/50 text-muted-foreground transition hover:border-primary/60 hover:text-primary"
+                className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card/50 text-muted-foreground transition hover:-translate-y-1 hover:border-primary/60 hover:text-primary"
               >
                 <Icon className="h-4 w-4" />
               </a>
@@ -356,24 +356,26 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-sm">
-          <div className="animate-pulse-glow relative aspect-square overflow-hidden rounded-3xl border border-primary/30">
-            <img
-              src={portrait}
-              alt="Sricharan Aitharaju portrait"
-              width={768}
-              height={768}
-              className="h-full w-full object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+        <div className="relative order-1 mx-auto w-full max-w-[16rem] sm:max-w-sm lg:order-2">
+          <div className="animate-float">
+            <div className="animate-pulse-glow relative aspect-square overflow-hidden rounded-3xl border border-primary/30">
+              <img
+                src={portrait}
+                alt="Sricharan Aitharaju portrait"
+                width={768}
+                height={768}
+                className="h-full w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+            </div>
           </div>
-          <div className="glass-card absolute -bottom-6 -left-6 rounded-xl px-4 py-3 text-xs">
+          <div className="glass-card animate-float-delayed absolute -bottom-4 -left-2 rounded-xl px-3 py-2 text-[11px] sm:-bottom-6 sm:-left-6 sm:px-4 sm:py-3 sm:text-xs">
             <div className="font-mono text-primary">~ B.Tech ECE</div>
             <div className="text-muted-foreground">Anurag University · 2024–28</div>
           </div>
-          <div className="glass-card absolute -right-4 top-8 rounded-xl px-4 py-3 text-xs">
+          <div className="glass-card animate-float absolute -right-2 top-4 rounded-xl px-3 py-2 text-[11px] sm:-right-4 sm:top-8 sm:px-4 sm:py-3 sm:text-xs">
             <div className="font-mono text-primary">CGPA</div>
-            <div className="text-lg font-bold">8.25</div>
+            <div className="text-base font-bold sm:text-lg">8.25</div>
           </div>
         </div>
       </div>
@@ -384,11 +386,11 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
 /* -------------------- SECTION HELPERS -------------------- */
 function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
   return (
-    <div className="mb-12 text-center">
-      <div className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+    <div className="mb-10 text-center sm:mb-12">
+      <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-primary sm:text-xs">
         {kicker}
       </div>
-      <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">{title}</h2>
+      <h2 className="font-display text-2xl font-bold sm:text-4xl lg:text-5xl">{title}</h2>
       <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-transparent via-primary to-transparent" />
     </div>
   );
@@ -403,7 +405,7 @@ function About() {
     { label: "Projects", value: "4" },
   ];
   return (
-    <section id="about" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="about" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="01 — About Me" title="Hardware × Software" />
       </Reveal>
@@ -493,7 +495,7 @@ function Skills() {
   ];
 
   return (
-    <section id="skills" className="relative mx-auto max-w-7xl px-6 py-24">
+    <section id="skills" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="02 — Skills" title="Technical Arsenal" />
       </Reveal>
@@ -511,7 +513,7 @@ function Skills() {
                 {g.skills.map((s) => (
                   <span
                     key={s}
-                    className="rounded-md border border-border bg-background/40 px-3 py-1 text-xs text-foreground/80"
+                    className="rounded-md border border-border bg-background/40 px-3 py-1 text-xs text-foreground/80 transition hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
                   >
                     {s}
                   </span>
@@ -568,7 +570,7 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="projects" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="03 — Projects" title="Selected Work" />
       </Reveal>
@@ -597,7 +599,7 @@ function Projects() {
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] font-medium text-primary"
+                      className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] font-medium text-primary transition hover:scale-105"
                     >
                       {t}
                     </span>
@@ -668,7 +670,7 @@ function Experience() {
     },
   ];
   return (
-    <section id="experience" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="experience" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="04 — Experience" title="Leadership & Involvement" />
       </Reveal>
@@ -719,7 +721,7 @@ function Achievements() {
   ];
 
   return (
-    <section id="achievements" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="achievements" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="05 — Recognition" title="Achievements & Certifications" />
       </Reveal>
@@ -788,7 +790,7 @@ function Education() {
     },
   ];
   return (
-    <section id="education" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="education" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="06 — Education" title="Academic Background" />
       </Reveal>
@@ -829,7 +831,7 @@ function Contact() {
     { Icon: MapPin, label: "Address", value: "Nacharam, Hyderabad", href: "#" },
   ];
   return (
-    <section id="contact" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="contact" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal>
         <SectionTitle kicker="07 — Contact" title="Let's Connect" />
       </Reveal>
