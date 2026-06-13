@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   Menu,
   X,
-  Download,
   ArrowRight,
   Linkedin,
   Github,
@@ -24,7 +23,7 @@ import {
 } from "lucide-react";
 import portraitAsset from "@/assets/sricharan-profile-new.jpeg.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
-const resumeUrl = "https://drive.google.com/uc?export=download&id=18L5R-_1OxvgTEOU9W3VUulsKE48Iwsqp";
+const resumeUrl = "https://drive.google.com/file/d/1J8blqYIfCdWulH8lvXGUX18DvsWH9o7D/view?usp=sharing";
 const portrait = portraitAsset.url;
 
 export const Route = createFileRoute("/")({
@@ -234,10 +233,11 @@ function Navbar({
         <div className="flex items-center gap-2">
           <a
             href={resumeUrl}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90 sm:inline-flex"
           >
-            <Download className="h-4 w-4" />
+            <ExternalLink className="h-4 w-4" />
             Resume
           </a>
           <button
@@ -266,10 +266,11 @@ function Navbar({
             ))}
             <a
               href={resumeUrl}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
             >
-              <Download className="h-4 w-4" /> Download Resume
+              <ExternalLink className="h-4 w-4" /> View Resume
             </a>
           </nav>
         </div>
@@ -326,11 +327,12 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
             </button>
             <a
               href={resumeUrl}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-md border border-border bg-card/50 px-6 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:text-primary"
             >
-              <Download className="h-4 w-4" />
-              Download Resume
+              <ExternalLink className="h-4 w-4" />
+              View Resume
             </a>
           </div>
           <div className="mt-10 flex items-center gap-4">
