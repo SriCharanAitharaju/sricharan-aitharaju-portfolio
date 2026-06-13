@@ -267,10 +267,11 @@ function Navbar({
             ))}
             <a
               href={resumeUrl}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
             >
-              <Download className="h-4 w-4" /> Download Resume
+              <ExternalLink className="h-4 w-4" /> View Resume
             </a>
           </nav>
         </div>
