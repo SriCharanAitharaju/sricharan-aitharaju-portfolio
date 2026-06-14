@@ -510,24 +510,26 @@ function Skills() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {groups.map((g, i) => (
           <Reveal key={g.title} delay={i * 80}>
-            <div className="glass-card hover-lift h-full rounded-2xl p-6">
-              <div className="mb-4 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary/15 text-primary">
-                  <g.icon className="h-5 w-5" />
-                </span>
-                <h3 className="font-semibold">{g.title}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {g.skills.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-md border border-border bg-background/40 px-3 py-1 text-xs text-foreground/80 transition hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
-                  >
-                    {s}
+            <TiltCard className="h-full rounded-2xl" max={5}>
+              <div className="glass-card hover-lift h-full rounded-2xl p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary/15 text-primary">
+                    <g.icon className="h-5 w-5" />
                   </span>
-                ))}
+                  <h3 className="font-semibold">{g.title}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {g.skills.map((s) => (
+                    <span
+                      key={s}
+                      className="rounded-md border border-border bg-background/40 px-3 py-1 text-xs text-foreground/80 transition hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </TiltCard>
           </Reveal>
         ))}
       </div>
