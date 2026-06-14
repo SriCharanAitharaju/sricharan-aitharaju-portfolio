@@ -633,20 +633,22 @@ function Projects() {
           );
           return (
             <Reveal key={p.title} delay={i * 100}>
-              {p.url ? (
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass-card hover-lift group relative block h-full overflow-hidden rounded-2xl p-7"
-                >
-                  {cardBody}
-                </a>
-              ) : (
-                <article className="glass-card hover-lift group relative h-full overflow-hidden rounded-2xl p-7">
-                  {cardBody}
-                </article>
-              )}
+              <TiltCard className="h-full rounded-2xl" max={6}>
+                {p.url ? (
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="glass-card hover-lift group relative block h-full overflow-hidden rounded-2xl p-7"
+                  >
+                    {cardBody}
+                  </a>
+                ) : (
+                  <article className="glass-card hover-lift group relative h-full overflow-hidden rounded-2xl p-7">
+                    {cardBody}
+                  </article>
+                )}
+              </TiltCard>
             </Reveal>
           );
         })}
