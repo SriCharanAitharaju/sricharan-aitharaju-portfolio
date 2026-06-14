@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import portraitAsset from "@/assets/sricharan-profile-new.jpeg.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
+import { TiltCard, ParallaxLayer, NeuralBackground } from "@/components/InteractiveEffects";
 const resumeUrl = "https://drive.google.com/file/d/1J8blqYIfCdWulH8lvXGUX18DvsWH9o7D/view?usp=sharing";
 const portrait = portraitAsset.url;
 
@@ -287,9 +288,10 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-24 sm:pt-28"
       style={{ backgroundImage: "var(--gradient-hero)" }}
     >
+      <NeuralBackground />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
             "linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
@@ -357,26 +359,32 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
         </div>
 
         <div className="relative order-1 mx-auto w-full max-w-[16rem] sm:max-w-sm lg:order-2">
-          <div className="animate-float">
-            <div className="animate-pulse-glow relative aspect-square overflow-hidden rounded-3xl border border-primary/30">
-              <img
-                src={portrait}
-                alt="Sricharan Aitharaju portrait"
-                width={768}
-                height={768}
-                className="h-full w-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+          <ParallaxLayer depth={16}>
+            <div className="animate-float">
+              <div className="animate-pulse-glow relative aspect-square overflow-hidden rounded-3xl border border-primary/30">
+                <img
+                  src={portrait}
+                  alt="Sricharan Aitharaju portrait"
+                  width={768}
+                  height={768}
+                  className="h-full w-full object-cover"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              </div>
             </div>
-          </div>
-          <div className="glass-card animate-float-delayed absolute -bottom-4 -left-2 rounded-xl px-3 py-2 text-[11px] sm:-bottom-6 sm:-left-6 sm:px-4 sm:py-3 sm:text-xs">
-            <div className="font-mono text-primary">~ B.Tech ECE</div>
-            <div className="text-muted-foreground">Anurag University · 2024–28</div>
-          </div>
-          <div className="glass-card animate-float absolute -right-2 top-4 rounded-xl px-3 py-2 text-[11px] sm:-right-4 sm:top-8 sm:px-4 sm:py-3 sm:text-xs">
-            <div className="font-mono text-primary">CGPA</div>
-            <div className="text-base font-bold sm:text-lg">8.25</div>
-          </div>
+          </ParallaxLayer>
+          <ParallaxLayer depth={28}>
+            <div className="glass-card animate-float-delayed absolute -bottom-4 -left-2 rounded-xl px-3 py-2 text-[11px] sm:-bottom-6 sm:-left-6 sm:px-4 sm:py-3 sm:text-xs">
+              <div className="font-mono text-primary">~ B.Tech ECE</div>
+              <div className="text-muted-foreground">Anurag University · 2024–28</div>
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer depth={36}>
+            <div className="glass-card animate-float absolute -right-2 top-4 rounded-xl px-3 py-2 text-[11px] sm:-right-4 sm:top-8 sm:px-4 sm:py-3 sm:text-xs">
+              <div className="font-mono text-primary">CGPA</div>
+              <div className="text-base font-bold sm:text-lg">8.25</div>
+            </div>
+          </ParallaxLayer>
         </div>
       </div>
     </section>
@@ -502,24 +510,26 @@ function Skills() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {groups.map((g, i) => (
           <Reveal key={g.title} delay={i * 80}>
-            <div className="glass-card hover-lift h-full rounded-2xl p-6">
-              <div className="mb-4 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary/15 text-primary">
-                  <g.icon className="h-5 w-5" />
-                </span>
-                <h3 className="font-semibold">{g.title}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {g.skills.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-md border border-border bg-background/40 px-3 py-1 text-xs text-foreground/80 transition hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
-                  >
-                    {s}
+            <TiltCard className="h-full rounded-2xl" max={5}>
+              <div className="glass-card hover-lift h-full rounded-2xl p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary/15 text-primary">
+                    <g.icon className="h-5 w-5" />
                   </span>
-                ))}
+                  <h3 className="font-semibold">{g.title}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {g.skills.map((s) => (
+                    <span
+                      key={s}
+                      className="rounded-md border border-border bg-background/40 px-3 py-1 text-xs text-foreground/80 transition hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </TiltCard>
           </Reveal>
         ))}
       </div>
@@ -625,20 +635,22 @@ function Projects() {
           );
           return (
             <Reveal key={p.title} delay={i * 100}>
-              {p.url ? (
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass-card hover-lift group relative block h-full overflow-hidden rounded-2xl p-7"
-                >
-                  {cardBody}
-                </a>
-              ) : (
-                <article className="glass-card hover-lift group relative h-full overflow-hidden rounded-2xl p-7">
-                  {cardBody}
-                </article>
-              )}
+              <TiltCard className="h-full rounded-2xl" max={6}>
+                {p.url ? (
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="glass-card hover-lift group relative block h-full overflow-hidden rounded-2xl p-7"
+                  >
+                    {cardBody}
+                  </a>
+                ) : (
+                  <article className="glass-card hover-lift group relative h-full overflow-hidden rounded-2xl p-7">
+                    {cardBody}
+                  </article>
+                )}
+              </TiltCard>
             </Reveal>
           );
         })}
