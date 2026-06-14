@@ -359,26 +359,32 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
         </div>
 
         <div className="relative order-1 mx-auto w-full max-w-[16rem] sm:max-w-sm lg:order-2">
-          <div className="animate-float">
-            <div className="animate-pulse-glow relative aspect-square overflow-hidden rounded-3xl border border-primary/30">
-              <img
-                src={portrait}
-                alt="Sricharan Aitharaju portrait"
-                width={768}
-                height={768}
-                className="h-full w-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+          <ParallaxLayer depth={16}>
+            <div className="animate-float">
+              <div className="animate-pulse-glow relative aspect-square overflow-hidden rounded-3xl border border-primary/30">
+                <img
+                  src={portrait}
+                  alt="Sricharan Aitharaju portrait"
+                  width={768}
+                  height={768}
+                  className="h-full w-full object-cover"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              </div>
             </div>
-          </div>
-          <div className="glass-card animate-float-delayed absolute -bottom-4 -left-2 rounded-xl px-3 py-2 text-[11px] sm:-bottom-6 sm:-left-6 sm:px-4 sm:py-3 sm:text-xs">
-            <div className="font-mono text-primary">~ B.Tech ECE</div>
-            <div className="text-muted-foreground">Anurag University · 2024–28</div>
-          </div>
-          <div className="glass-card animate-float absolute -right-2 top-4 rounded-xl px-3 py-2 text-[11px] sm:-right-4 sm:top-8 sm:px-4 sm:py-3 sm:text-xs">
-            <div className="font-mono text-primary">CGPA</div>
-            <div className="text-base font-bold sm:text-lg">8.25</div>
-          </div>
+          </ParallaxLayer>
+          <ParallaxLayer depth={28}>
+            <div className="glass-card animate-float-delayed absolute -bottom-4 -left-2 rounded-xl px-3 py-2 text-[11px] sm:-bottom-6 sm:-left-6 sm:px-4 sm:py-3 sm:text-xs">
+              <div className="font-mono text-primary">~ B.Tech ECE</div>
+              <div className="text-muted-foreground">Anurag University · 2024–28</div>
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer depth={36}>
+            <div className="glass-card animate-float absolute -right-2 top-4 rounded-xl px-3 py-2 text-[11px] sm:-right-4 sm:top-8 sm:px-4 sm:py-3 sm:text-xs">
+              <div className="font-mono text-primary">CGPA</div>
+              <div className="text-base font-bold sm:text-lg">8.25</div>
+            </div>
+          </ParallaxLayer>
         </div>
       </div>
     </section>
