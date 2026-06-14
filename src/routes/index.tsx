@@ -288,9 +288,10 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-24 sm:pt-28"
       style={{ backgroundImage: "var(--gradient-hero)" }}
     >
+      <NeuralBackground />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
             "linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
