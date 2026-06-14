@@ -185,3 +185,55 @@
   vertical-align: text-bottom;
   animation: blink-caret 1s step-end infinite;
 }
+
+/* ----- Cinematic name intro ----- */
+@keyframes intro-letter-in {
+  0%   { opacity: 0; transform: translateY(40px) rotateX(-70deg); filter: blur(12px); }
+  60%  { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
+}
+@keyframes intro-scan {
+  0%   { top: -10%; opacity: 0; }
+  20%  { opacity: 1; }
+  100% { top: 110%; opacity: 0; }
+}
+@keyframes intro-line {
+  0% { width: 0; }
+  100% { width: 320px; }
+}
+@keyframes intro-fade-up {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes intro-radial-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.85; }
+}
+@keyframes intro-zoom-out {
+  to { transform: scale(1.08); filter: blur(6px); opacity: 0; }
+}
+
+.intro-letter {
+  opacity: 0;
+  transform-origin: 50% 100%;
+  animation: intro-letter-in 700ms cubic-bezier(.2,.8,.2,1) forwards;
+}
+.intro-scan {
+  top: -10%;
+  animation: intro-scan 2.4s cubic-bezier(.6,.05,.4,1) 200ms forwards;
+}
+.intro-line {
+  animation: intro-line 900ms cubic-bezier(.2,.8,.2,1) 1400ms forwards;
+}
+.intro-fade-in-up {
+  opacity: 0;
+  animation: intro-fade-up 700ms ease-out 200ms forwards;
+}
+.intro-radial {
+  background: radial-gradient(ellipse at center, oklch(0.78 0.18 220 / 0.18), transparent 60%);
+  animation: intro-radial-pulse 2.4s ease-in-out infinite;
+}
+.intro-zoom-out {
+  animation: intro-zoom-out 800ms cubic-bezier(.6,.05,.4,1) forwards;
+}
+
