@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import portraitAsset from "@/assets/sricharan-profile-new.jpeg.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
+import { TiltCard, ParallaxLayer, NeuralBackground } from "@/components/InteractiveEffects";
 const resumeUrl = "https://drive.google.com/file/d/1J8blqYIfCdWulH8lvXGUX18DvsWH9o7D/view?usp=sharing";
 const portrait = portraitAsset.url;
 
