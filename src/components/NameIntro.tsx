@@ -32,8 +32,8 @@ export function NameIntro() {
 
   if (!mounted || phase === "done") return null;
 
-  const first = "Sricharan";
-  const last = "Aitharaju";
+  const first = "AITHARAJU";
+  const last = "SRICHARAN";
 
   return (
     <div
