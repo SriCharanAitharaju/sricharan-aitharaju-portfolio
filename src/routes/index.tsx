@@ -25,6 +25,7 @@ import portraitAsset from "@/assets/sricharan-profile-new.jpeg.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
 import { TiltCard, ParallaxLayer, NeuralBackground, ScrollProgress, CursorGlow, Typewriter } from "@/components/InteractiveEffects";
 import { NameIntro } from "@/components/NameIntro";
+import { HeroGraphics } from "@/components/HeroGraphics";
 import { SectionTransition } from "@/components/SectionTransition";
 const resumeUrl = "https://drive.google.com/file/d/1J8blqYIfCdWulH8lvXGUX18DvsWH9o7D/view?usp=sharing";
 const portrait = portraitAsset.url;
