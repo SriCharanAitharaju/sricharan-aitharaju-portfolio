@@ -279,3 +279,120 @@ export function NeuralBackground({ className = "" }: { className?: string }) {
     />
   );
 }
+
+/* ------- Scroll progress bar (fixed top) ------- */
+export function ScrollProgress() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      const el = ref.current;
+      if (!el) return;
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      const pct = total > 0 ? (h.scrollTop / total) * 100 : 0;
+      el.style.transform = `scaleX(${pct / 100})`;
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+  return (
+    <div className="fixed inset-x-0 top-0 z-[60] h-[2px] bg-transparent" aria-hidden>
+      <div
+        ref={ref}
+        className="h-full w-full origin-left bg-gradient-to-r from-primary via-primary/80 to-primary/40 shadow-[0_0_10px_hsl(var(--primary)/0.6)]"
+        style={{ transform: "scaleX(0)" }}
+      />
+    </div>
+  );
+}
+
+/* ------- Cursor spotlight (scoped to a container) ------- */
+export function CursorGlow({ className = "" }: { className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const coarse = useCoarsePointer();
+  useEffect(() => {
+    if (reduced || coarse) return;
+    const el = ref.current;
+    if (!el) return;
+    const parent = el.parentElement;
+    if (!parent) return;
+    let raf = 0;
+    const onMove = (e: MouseEvent) => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = parent.getBoundingClientRect();
+        el.style.setProperty("--cx", `${e.clientX - r.left}px`);
+        el.style.setProperty("--cy", `${e.clientY - r.top}px`);
+        el.style.opacity = "1";
+      });
+    };
+    const onLeave = () => {
+      el.style.opacity = "0";
+    };
+    parent.addEventListener("mousemove", onMove);
+    parent.addEventListener("mouseleave", onLeave);
+    return () => {
+      parent.removeEventListener("mousemove", onMove);
+      parent.removeEventListener("mouseleave", onLeave);
+      cancelAnimationFrame(raf);
+    };
+  }, [reduced, coarse]);
+  return (
+    <div
+      ref={ref}
+      aria-hidden
+      className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ${className}`}
+      style={{
+        background:
+          "radial-gradient(380px circle at var(--cx, 50%) var(--cy, 50%), color-mix(in oklch, var(--cyan-glow) 18%, transparent), transparent 60%)",
+        mixBlendMode: "screen",
+      }}
+    />
+  );
+}
+
+/* ------- Delayed typewriter for a single string ------- */
+export function Typewriter({
+  text,
+  startDelay = 0,
+  speed = 38,
+  className = "",
+  caret = true,
+}: {
+  text: string;
+  startDelay?: number;
+  speed?: number;
+  className?: string;
+  caret?: boolean;
+}) {
+  const [out, setOut] = useState("");
+  const [started, setStarted] = useState(false);
+  useEffect(() => {
+    const s = setTimeout(() => setStarted(true), startDelay);
+    return () => clearTimeout(s);
+  }, [startDelay]);
+  useEffect(() => {
+    if (!started) return;
+    if (out.length >= text.length) return;
+    const t = setTimeout(() => setOut(text.slice(0, out.length + 1)), speed);
+    return () => clearTimeout(t);
+  }, [started, out, text, speed]);
+  return (
+    <span className={className}>
+      {out}
+      {caret && out.length < text.length && <span className="caret" />}
+    </span>
+  );
+}
