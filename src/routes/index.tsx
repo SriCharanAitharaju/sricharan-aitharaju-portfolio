@@ -355,7 +355,7 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
           <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
             {[
               { Icon: Linkedin, href: "https://linkedin.com/in/sricharan-aitharaju", label: "LinkedIn" },
-              { Icon: Github, href: "https://github.com/", label: "GitHub" },
+              { Icon: Github, href: "https://github.com/SriCharanAitharaju", label: "GitHub" },
               { Icon: Mail, href: "mailto:sricharanaitharaju@gmail.com", label: "Email" },
               { Icon: Phone, href: "tel:+919059071512", label: "Phone" },
             ].map(({ Icon, href, label }) => (
@@ -949,7 +949,7 @@ function Footer() {
         <div className="flex items-center gap-3">
           {[
             { Icon: Linkedin, href: "https://linkedin.com/in/sricharan-aitharaju", label: "LinkedIn" },
-            { Icon: Github, href: "https://github.com/", label: "GitHub" },
+            { Icon: Github, href: "https://github.com/SriCharanAitharaju", label: "GitHub" },
             { Icon: Mail, href: "mailto:sricharanaitharaju@gmail.com", label: "Email" },
             { Icon: Phone, href: "tel:+919059071512", label: "Phone" },
           ].map(({ Icon, href, label }) => (
