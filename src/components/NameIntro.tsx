@@ -17,11 +17,11 @@ export function NameIntro() {
     setMounted(true);
     document.body.style.overflow = "hidden";
 
-    const t1 = setTimeout(() => setPhase("out"), 2800);
+    const t1 = setTimeout(() => setPhase("out"), 3400);
     const t2 = setTimeout(() => {
       setPhase("done");
       document.body.style.overflow = "";
-    }, 3700);
+    }, 4300);
 
     return () => {
       clearTimeout(t1);
