@@ -17,11 +17,11 @@ export function NameIntro() {
     setMounted(true);
     document.body.style.overflow = "hidden";
 
-    const t1 = setTimeout(() => setPhase("out"), 2800);
+    const t1 = setTimeout(() => setPhase("out"), 3400);
     const t2 = setTimeout(() => {
       setPhase("done");
       document.body.style.overflow = "";
-    }, 3700);
+    }, 4300);
 
     return () => {
       clearTimeout(t1);
@@ -32,8 +32,8 @@ export function NameIntro() {
 
   if (!mounted || phase === "done") return null;
 
-  const first = "Sricharan";
-  const last = "Aitharaju";
+  const first = "AITHARAJU";
+  const last = "SRICHARAN";
 
   return (
     <div
@@ -67,28 +67,30 @@ export function NameIntro() {
         <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.5em] text-primary/80 intro-fade-in-up">
           // initializing portfolio
         </div>
-        <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl md:text-8xl">
-          <span className="block">
-            {first.split("").map((c, i) => (
-              <span
-                key={`f${i}`}
-                className="inline-block intro-letter text-foreground"
-                style={{ animationDelay: `${i * 60}ms` }}
-              >
-                {c}
-              </span>
-            ))}
-          </span>
-          <span className="mt-2 block text-gradient-animated">
-            {last.split("").map((c, i) => (
-              <span
-                key={`l${i}`}
-                className="inline-block intro-letter"
-                style={{ animationDelay: `${600 + i * 60}ms` }}
-              >
-                {c}
-              </span>
-            ))}
+        <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-[0.04em] sm:text-7xl md:text-8xl">
+          <span className="relative inline-block name-shimmer">
+            <span className="block">
+              {first.split("").map((c, i) => (
+                <span
+                  key={`f${i}`}
+                  className="inline-block intro-letter text-foreground"
+                  style={{ animationDelay: `${i * 70}ms` }}
+                >
+                  {c}
+                </span>
+              ))}
+            </span>
+            <span className="mt-2 block text-gradient-animated">
+              {last.split("").map((c, i) => (
+                <span
+                  key={`l${i}`}
+                  className="inline-block intro-letter"
+                  style={{ animationDelay: `${700 + i * 70}ms` }}
+                >
+                  {c}
+                </span>
+              ))}
+            </span>
           </span>
         </h1>
         <div
