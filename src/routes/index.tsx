@@ -314,9 +314,9 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
       />
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 sm:gap-12 sm:px-6 sm:py-16 lg:grid-cols-[1.3fr_1fr]">
         <div className="order-2 animate-fade-up lg:order-1">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-            Open to VLSI & ECE Internships
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/5 px-4 py-1.5 text-xs font-medium text-emerald-300">
+            <span className="pulse-dot-green h-2 w-2 rounded-full" />
+            Currently open to opportunities · VLSI & ECE Internships
           </div>
           <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             Sricharan
@@ -328,8 +328,11 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
             <span className="caret" />
           </div>
           <p className="mt-6 max-w-xl text-sm text-muted-foreground sm:text-lg">
-            Building at the intersection of hardware and intelligence — from RTL design to
-            real-world sensor systems.
+            <Typewriter
+              text="Building at the intersection of hardware and intelligence — from RTL design to real-world sensor systems."
+              startDelay={3600}
+              speed={28}
+            />
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <button
