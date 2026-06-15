@@ -168,6 +168,7 @@ function Portfolio() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <NameIntro />
+      <ScrollProgress />
       <Navbar
         active={active}
         scrolled={scrolled}
