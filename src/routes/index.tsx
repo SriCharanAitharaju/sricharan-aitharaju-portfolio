@@ -300,6 +300,7 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
       style={{ backgroundImage: "var(--gradient-hero)" }}
     >
       <NeuralBackground />
+      <CursorGlow />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.06]"
