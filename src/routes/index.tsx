@@ -320,10 +320,32 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
             <span className="pulse-dot-green h-2 w-2 rounded-full" />
             Currently open to opportunities · VLSI & ECE Internships
           </div>
-          <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-            Sricharan
-            <br />
-            <span className="text-gradient-animated">Aitharaju</span>
+          <h1
+            className="name-orbitron name-gradient font-extrabold uppercase leading-[0.95] tracking-[0.04em]"
+            style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
+          >
+            <span className="hero-name-line block">
+              {"AITHARAJU".split("").map((c, i) => (
+                <span
+                  key={`hf${i}`}
+                  className="inline-block hero-letter-in"
+                  style={{ animationDelay: `${200 + i * 50}ms` }}
+                >
+                  {c}
+                </span>
+              ))}
+            </span>
+            <span className="hero-name-line mt-1 block sm:mt-2">
+              {"SRICHARAN".split("").map((c, i) => (
+                <span
+                  key={`hl${i}`}
+                  className="inline-block hero-letter-in"
+                  style={{ animationDelay: `${1500 + i * 50}ms` }}
+                >
+                  {c}
+                </span>
+              ))}
+            </span>
           </h1>
           <div className="mt-6 flex min-h-8 items-center text-base font-medium text-foreground/80 sm:text-2xl">
             <span>{typed}</span>
@@ -332,7 +354,7 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
           <p className="mt-6 max-w-xl text-sm text-muted-foreground sm:text-lg">
             <Typewriter
               text="Building at the intersection of hardware and intelligence — from RTL design to real-world sensor systems."
-              startDelay={3600}
+              startDelay={3200}
               speed={28}
             />
           </p>
