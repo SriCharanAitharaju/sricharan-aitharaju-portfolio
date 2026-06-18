@@ -34,9 +34,9 @@ export function NameIntro() {
 
   const first = "AITHARAJU";
   const last = "SRICHARAN";
-  const firstBase = 100; // ms, first letter starts
-  const stepMs = 90;
-  const lastBase = firstBase + first.length * stepMs + 250; // ~1.4s
+  const firstBase = 0;
+  const stepMs = 50;
+  const lastBase = 1500;
 
   return (
     <div
@@ -69,25 +69,25 @@ export function NameIntro() {
         </div>
 
         <h1
-          className="name-shimmer font-display font-extrabold leading-[1.02] tracking-[0.02em]"
+          className="name-shimmer font-extrabold leading-[1.02] tracking-[0.04em] name-orbitron"
           style={{ fontSize: "clamp(2.25rem, 11vw, 8rem)" }}
         >
-          <span className="block whitespace-nowrap text-gradient-animated drop-shadow-[0_0_25px_oklch(0.78_0.18_220/0.45)]">
+          <span className="block whitespace-nowrap name-gradient">
             {first.split("").map((c, i) => (
               <span
                 key={`f${i}`}
-                className="inline-block intro-letter"
+                className="inline-block intro-letter-spring"
                 style={{ animationDelay: `${firstBase + i * stepMs}ms` }}
               >
                 {c}
               </span>
             ))}
           </span>
-          <span className="mt-1 block whitespace-nowrap text-gradient-animated drop-shadow-[0_0_25px_oklch(0.78_0.18_220/0.45)] sm:mt-2">
+          <span className="mt-1 block whitespace-nowrap name-gradient sm:mt-2">
             {last.split("").map((c, i) => (
               <span
                 key={`l${i}`}
-                className="inline-block intro-letter"
+                className="inline-block intro-letter-spring"
                 style={{ animationDelay: `${lastBase + i * stepMs}ms` }}
               >
                 {c}
@@ -98,11 +98,11 @@ export function NameIntro() {
 
         <div
           className="mx-auto mt-6 h-[2px] w-0 bg-gradient-to-r from-transparent via-primary to-transparent intro-line"
-          style={{ animationDelay: `${lastBase + last.length * stepMs + 100}ms` }}
+          style={{ animationDelay: `2900ms` }}
         />
         <div
           className="mt-5 font-mono text-[10px] tracking-[0.35em] text-muted-foreground intro-fade-in-up sm:text-xs"
-          style={{ animationDelay: `${lastBase + last.length * stepMs + 200}ms` }}
+          style={{ animationDelay: `3000ms` }}
         >
           ECE · VLSI · EMBEDDED
         </div>
