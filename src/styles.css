@@ -213,27 +213,34 @@
   to { transform: scale(1.08); filter: blur(6px); opacity: 0; }
 }
 
-.intro-letter {
-  opacity: 0;
-  transform-origin: 50% 100%;
-  animation: intro-letter-in 700ms cubic-bezier(.2,.8,.2,1) forwards;
+/* ----- Premium splash ----- */
+@keyframes splash-in {
+  0%   { opacity: 0; transform: scale(0.96); filter: blur(14px); text-shadow: 0 0 0 rgba(255,255,255,0); }
+  60%  { opacity: 1; filter: blur(0); text-shadow: 0 0 40px oklch(0.78 0.18 220 / 0.35); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); text-shadow: 0 0 22px oklch(0.78 0.18 220 / 0.18); }
 }
-.intro-scan {
-  top: -10%;
-  animation: intro-scan 2.4s cubic-bezier(.6,.05,.4,1) 200ms forwards;
+@keyframes splash-out {
+  0%   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  100% { opacity: 0; transform: translateY(-24px) scale(1.02); filter: blur(6px); }
 }
-.intro-line {
-  animation: intro-line 900ms cubic-bezier(.2,.8,.2,1) 1400ms forwards;
+@keyframes splash-ambient {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.9; }
 }
-.intro-fade-in-up {
-  opacity: 0;
-  animation: intro-fade-up 700ms ease-out 200ms forwards;
+@keyframes splash-page-in {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
-.intro-radial {
-  background: radial-gradient(ellipse at center, oklch(0.78 0.18 220 / 0.18), transparent 60%);
-  animation: intro-radial-pulse 2.4s ease-in-out infinite;
+
+.splash-in  { animation: splash-in 1600ms cubic-bezier(.2,.7,.2,1) both; }
+.splash-out { animation: splash-out 800ms cubic-bezier(.6,.05,.4,1) both; }
+.splash-ambient {
+  background:
+    radial-gradient(ellipse at center, oklch(0.78 0.18 220 / 0.10), transparent 65%),
+    radial-gradient(ellipse at 30% 70%, oklch(0.65 0.22 250 / 0.06), transparent 70%);
+  animation: splash-ambient 4s ease-in-out infinite;
 }
-.intro-zoom-out {
-  animation: intro-zoom-out 800ms cubic-bezier(.6,.05,.4,1) forwards;
+.splash-page-in {
+  animation: splash-page-in 900ms cubic-bezier(.2,.7,.2,1) both;
 }
 
