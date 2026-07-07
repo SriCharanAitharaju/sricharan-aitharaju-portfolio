@@ -25,7 +25,6 @@ import portraitAsset from "@/assets/sricharan-profile-new.jpeg.asset.json";
 import { ChatWidget } from "@/components/ChatWidget";
 import { TiltCard, ParallaxLayer, NeuralBackground } from "@/components/InteractiveEffects";
 import { NameIntro } from "@/components/NameIntro";
-import { SectionTransition } from "@/components/SectionTransition";
 const resumeUrl = "https://drive.google.com/file/d/1J8blqYIfCdWulH8lvXGUX18DvsWH9o7D/view?usp=sharing";
 const portrait = portraitAsset.url;
 
@@ -176,19 +175,12 @@ function Portfolio() {
         goTo={goTo}
       />
       <Hero typed={typed} goTo={goTo} />
-      <SectionTransition label="About" />
       <About />
-      <SectionTransition label="Skills" />
       <Skills />
-      <SectionTransition label="Projects" />
       <Projects />
-      <SectionTransition label="Experience" />
       <Experience />
-      <SectionTransition label="Achievements" />
       <Achievements />
-      <SectionTransition label="Education" />
       <Education />
-      <SectionTransition label="Contact" />
       <Contact />
       <Footer />
       <ChatWidget />
