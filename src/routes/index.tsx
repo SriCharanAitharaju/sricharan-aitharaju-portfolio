@@ -166,7 +166,7 @@ function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground splash-page-in">
       <NameIntro />
       <Navbar
         active={active}
