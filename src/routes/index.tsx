@@ -350,7 +350,7 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
           <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
             {[
               { Icon: Linkedin, href: "https://linkedin.com/in/sricharan-aitharaju", label: "LinkedIn" },
-              { Icon: Github, href: "https://github.com/", label: "GitHub" },
+              { Icon: Github, href: "https://github.com/SriCharanAitharaju", label: "GitHub" },
               { Icon: Mail, href: "mailto:sricharanaitharaju@gmail.com", label: "Email" },
               { Icon: Phone, href: "tel:+919059071512", label: "Phone" },
             ].map(({ Icon, href, label }) => (
@@ -358,7 +358,7 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
                 key={label}
                 href={href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label={label}
                 className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card/50 text-muted-foreground transition hover:-translate-y-1 hover:border-primary/60 hover:text-primary"
               >
@@ -944,7 +944,7 @@ function Footer() {
         <div className="flex items-center gap-3">
           {[
             { Icon: Linkedin, href: "https://linkedin.com/in/sricharan-aitharaju", label: "LinkedIn" },
-            { Icon: Github, href: "https://github.com/", label: "GitHub" },
+            { Icon: Github, href: "https://github.com/SriCharanAitharaju", label: "GitHub" },
             { Icon: Mail, href: "mailto:sricharanaitharaju@gmail.com", label: "Email" },
             { Icon: Phone, href: "tel:+919059071512", label: "Phone" },
           ].map(({ Icon, href, label }) => (
@@ -953,7 +953,7 @@ function Footer() {
               href={href}
               aria-label={label}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="grid h-9 w-9 place-items-center rounded-full border border-border text-muted-foreground transition hover:border-primary/60 hover:text-primary"
             >
               <Icon className="h-4 w-4" />
