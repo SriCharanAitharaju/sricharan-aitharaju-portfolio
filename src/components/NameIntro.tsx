@@ -1,12 +1,30 @@
 import { useEffect, useState } from "react";
 
 /**
- * Premium splash screen — "SRICHARAN AITHARAJU" on black.
- * Self-contained: all styles inline, no external CSS dependencies.
+ * Cinematic opening:
+ *  Phase 1 — multilingual greetings cycle ("Namaste", "Hello", ...)
+ *  Phase 2 — per-letter reveal of "SRICHARAN AITHARAJU"
+ *  Phase 3 — lift + dissolve, then the portfolio reveals.
+ * Self-contained: all styles inline / in a local <style> tag.
  */
+
+const GREETINGS = [
+  "नमस्ते",
+  "Hello",
+  "నమస్కారం",
+  "Bonjour",
+  "こんにちは",
+  "Hola",
+  "Namaste",
+];
+
+const GREETING_MS = 300;
+const NAME = "SRICHARAN AITHARAJU";
+
 export function NameIntro() {
   const [mounted, setMounted] = useState(true);
-  const [phase, setPhase] = useState<"in" | "out">("in");
+  const [phase, setPhase] = useState<"greet" | "name" | "out">("greet");
+  const [gi, setGi] = useState(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -19,7 +37,6 @@ export function NameIntro() {
 
     document.body.style.overflow = "hidden";
 
-    // Inject a one-off page-reveal animation on unmount.
     const styleEl = document.createElement("style");
     styleEl.setAttribute("data-splash-reveal", "");
     styleEl.textContent = `
@@ -28,25 +45,38 @@ export function NameIntro() {
         100% { opacity: 1; transform: translateY(0); }
       }
       body.splash-revealing > * {
-        animation: splashPageReveal 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation: splashPageReveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
       }
     `;
     document.head.appendChild(styleEl);
 
-    const t1 = window.setTimeout(() => setPhase("out"), 2000);
-    const t2 = window.setTimeout(() => {
-      setMounted(false);
-      document.body.style.overflow = "";
-      document.body.classList.add("splash-revealing");
+    const timers: number[] = [];
+
+    // Greeting cycle
+    GREETINGS.forEach((_, idx) => {
+      if (idx === 0) return;
+      timers.push(window.setTimeout(() => setGi(idx), idx * GREETING_MS));
+    });
+
+    const greetEnd = GREETINGS.length * GREETING_MS;
+    const nameDuration = 2400;
+
+    timers.push(window.setTimeout(() => setPhase("name"), greetEnd));
+    timers.push(window.setTimeout(() => setPhase("out"), greetEnd + nameDuration));
+    timers.push(
       window.setTimeout(() => {
-        document.body.classList.remove("splash-revealing");
-        styleEl.remove();
-      }, 650);
-    }, 2800);
+        setMounted(false);
+        document.body.style.overflow = "";
+        document.body.classList.add("splash-revealing");
+        window.setTimeout(() => {
+          document.body.classList.remove("splash-revealing");
+          styleEl.remove();
+        }, 750);
+      }, greetEnd + nameDuration + 800),
+    );
 
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
+      timers.forEach(clearTimeout);
       document.body.style.overflow = "";
       document.body.classList.remove("splash-revealing");
       styleEl.remove();
@@ -55,26 +85,7 @@ export function NameIntro() {
 
   if (!mounted) return null;
 
-  const isIn = phase === "in";
-
-  const nameStyle: React.CSSProperties = {
-    fontFamily: '"Inter", system-ui, -apple-system, sans-serif',
-    fontWeight: 800,
-    fontSize: "clamp(2.5rem, 10vw, 7.5rem)",
-    letterSpacing: "0.08em",
-    color: "#ffffff",
-    textAlign: "center",
-    lineHeight: 1.1,
-    margin: 0,
-    padding: "0 1rem",
-    opacity: isIn ? undefined : 0,
-    transform: isIn ? undefined : "translateY(-24px)",
-    filter: "blur(0)",
-    animation: isIn
-      ? "splashNameIn 1400ms cubic-bezier(0.22, 1, 0.36, 1) both"
-      : "splashNameOut 800ms cubic-bezier(0.4, 0, 0.2, 1) both",
-    willChange: "opacity, transform, filter",
-  };
+  const letters = NAME.split("");
 
   return (
     <div
@@ -87,28 +98,138 @@ export function NameIntro() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        overflow: "hidden",
+        animation:
+          phase === "out"
+            ? "splashCurtain 800ms cubic-bezier(0.6,0.05,0.4,1) both"
+            : undefined,
       }}
     >
       <style>{`
-        @keyframes splashNameIn {
-          0%   { opacity: 0; transform: scale(0.96); filter: blur(8px); }
-          100% { opacity: 1; transform: scale(1); filter: blur(0px); }
+        @keyframes splashGreetIn {
+          0%   { opacity: 0; transform: translateY(14px) scale(0.97); filter: blur(6px); }
+          100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
         }
-        @keyframes splashNameOut {
-          0%   { opacity: 1; transform: translateY(0); filter: blur(0px); }
-          100% { opacity: 0; transform: translateY(-24px); filter: blur(0px); }
+        @keyframes splashLetterIn {
+          0%   { opacity: 0; transform: translateY(46px) rotateX(-80deg) scale(1.25); filter: blur(10px); }
+          60%  { opacity: 1; filter: blur(0); }
+          100% { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); filter: blur(0); }
+        }
+        @keyframes splashLineGrow {
+          0%   { transform: scaleX(0); opacity: 0; }
+          100% { transform: scaleX(1); opacity: 1; }
+        }
+        @keyframes splashSweep {
+          0%   { left: -40%; opacity: 0; }
+          20%  { opacity: 1; }
+          100% { left: 140%; opacity: 0; }
+        }
+        @keyframes splashCurtain {
+          0%   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+          100% { opacity: 0; transform: translateY(-40px) scale(1.04); filter: blur(8px); }
+        }
+        @keyframes splashHalo {
+          0%, 100% { opacity: 0.45; }
+          50%      { opacity: 0.9; }
         }
       `}</style>
+
+      {/* ambient halo */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,0.04), transparent 60%)",
+            "radial-gradient(ellipse at center, rgba(0,194,255,0.10), transparent 62%)",
+          animation: "splashHalo 4s ease-in-out infinite",
           pointerEvents: "none",
         }}
       />
-      <h1 style={nameStyle}>SRICHARAN AITHARAJU</h1>
+
+      {phase === "greet" ? (
+        <div
+          key={gi}
+          style={{
+            fontFamily: '"Inter", system-ui, -apple-system, sans-serif',
+            fontWeight: 600,
+            fontSize: "clamp(2rem, 7vw, 4.5rem)",
+            color: "#ffffff",
+            letterSpacing: "0.02em",
+            textAlign: "center",
+            padding: "0 1rem",
+            animation: "splashGreetIn 260ms cubic-bezier(0.22,1,0.36,1) both",
+          }}
+        >
+          {GREETINGS[gi]}
+        </div>
+      ) : (
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "1.1rem",
+            perspective: "900px",
+            padding: "0 1rem",
+          }}
+        >
+          <h1
+            style={{
+              margin: 0,
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              fontFamily: '"Inter", system-ui, -apple-system, sans-serif',
+              fontWeight: 800,
+              fontSize: "clamp(1.9rem, 8.5vw, 6.5rem)",
+              letterSpacing: "0.08em",
+              lineHeight: 1.1,
+              color: "#ffffff",
+              transformStyle: "preserve-3d",
+            }}
+          >
+            {letters.map((ch, i) => (
+              <span
+                key={`${ch}-${i}`}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: "pre",
+                  animation: `splashLetterIn 700ms cubic-bezier(0.22,1,0.36,1) ${i * 55}ms both`,
+                  willChange: "transform, opacity, filter",
+                }}
+              >
+                {ch === " " ? "\u00A0" : ch}
+              </span>
+            ))}
+          </h1>
+
+          <div
+            style={{
+              position: "relative",
+              width: "min(70vw, 420px)",
+              height: 2,
+              background:
+                "linear-gradient(90deg, transparent, rgba(0,194,255,0.9), transparent)",
+              transformOrigin: "center",
+              animation: `splashLineGrow 700ms cubic-bezier(0.22,1,0.36,1) ${letters.length * 55 + 120}ms both`,
+              overflow: "hidden",
+            }}
+          >
+            <span
+              style={{
+                position: "absolute",
+                top: 0,
+                width: "40%",
+                height: "100%",
+                background:
+                  "linear-gradient(90deg, transparent, #ffffff, transparent)",
+                animation: `splashSweep 1200ms ease-in-out ${letters.length * 55 + 400}ms both`,
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
