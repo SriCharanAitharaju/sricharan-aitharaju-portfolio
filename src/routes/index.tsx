@@ -165,26 +165,28 @@ function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground splash-page-in">
+    <>
       <NameIntro />
-      <Navbar
-        active={active}
-        scrolled={scrolled}
-        menuOpen={menuOpen}
-        setMenuOpen={setMenuOpen}
-        goTo={goTo}
-      />
-      <Hero typed={typed} goTo={goTo} />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Achievements />
-      <Education />
-      <Contact />
-      <Footer />
-      <ChatWidget />
-    </div>
+      <div className="min-h-screen bg-background text-foreground splash-page-in">
+        <Navbar
+          active={active}
+          scrolled={scrolled}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+          goTo={goTo}
+        />
+        <Hero typed={typed} goTo={goTo} />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Achievements />
+        <Education />
+        <Contact />
+        <Footer />
+        <ChatWidget />
+      </div>
+    </>
   );
 }
 
