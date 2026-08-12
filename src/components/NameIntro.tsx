@@ -230,6 +230,7 @@ export function NameIntro() {
           </div>
         </div>
       )}
-    </div>
+    </div>,
+    document.body,
   );
 }
