@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 /**
  * Cinematic opening:
@@ -83,11 +84,11 @@ export function NameIntro() {
     };
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted || typeof document === "undefined") return null;
 
   const letters = NAME.split("");
 
-  return (
+  return createPortal(
     <div
       aria-hidden
       style={{
@@ -230,6 +231,7 @@ export function NameIntro() {
           </div>
         </div>
       )}
-    </div>
+    </div>,
+    document.body,
   );
 }
