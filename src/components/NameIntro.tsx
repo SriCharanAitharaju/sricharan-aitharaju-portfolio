@@ -83,11 +83,11 @@ export function NameIntro() {
     };
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted || typeof document === "undefined") return null;
 
   const letters = NAME.split("");
 
-  return (
+  return createPortal(
     <div
       aria-hidden
       style={{
