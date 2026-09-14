@@ -834,12 +834,37 @@ function Education() {
 /* -------------------- CONTACT -------------------- */
 function Contact() {
   const [sent, setSent] = useState(false);
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const submitContact = useServerFn(sendContactMessage);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    (e.currentTarget as HTMLFormElement).reset();
+    const form = e.currentTarget as HTMLFormElement;
+    const fd = new FormData(form);
+    setError(null);
+    setSending(true);
+    try {
+      const res = await submitContact({
+        data: {
+          name: String(fd.get("name") ?? ""),
+          email: String(fd.get("email") ?? ""),
+          message: String(fd.get("message") ?? ""),
+        },
+      });
+      if (res.ok) {
+        setSent(true);
+        setTimeout(() => setSent(false), 4000);
+        form.reset();
+      } else {
+        setError(res.error);
+      }
+    } catch {
+      setError("Could not send your message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
+
   const items = [
     { Icon: Mail, label: "Email", value: "sricharanaitharaju@gmail.com", href: "mailto:sricharanaitharaju@gmail.com" },
     { Icon: Phone, label: "Phone", value: "+91 9059071512", href: "tel:+919059071512" },
