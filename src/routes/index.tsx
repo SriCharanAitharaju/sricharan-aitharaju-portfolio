@@ -790,7 +790,7 @@ function Education() {
       title: "B.Tech, Electronics & Communication Engineering",
       org: "Anurag University, Hyderabad",
       period: "2024 – 2028",
-      score: "CGPA: 8.25",
+      score: "CGPA: 8.40",
     },
     {
       title: "Class XII",
