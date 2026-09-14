@@ -941,13 +941,20 @@ function Contact() {
                 placeholder="Tell me about an opportunity, project, or just say hello."
               />
             </div>
+            {error && (
+              <p className="text-sm text-destructive" role="alert">
+                {error}
+              </p>
+            )}
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+              disabled={sending}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-70"
             >
               <Send className="h-4 w-4" />
-              {sent ? "Message Sent — Thank you!" : "Send Message"}
+              {sent ? "Message Sent — Thank you!" : sending ? "Sending…" : "Send Message"}
             </button>
+
           </form>
         </Reveal>
       </div>
