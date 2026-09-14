@@ -411,7 +411,7 @@ function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
 /* -------------------- ABOUT -------------------- */
 function About() {
   const stats = [
-    { label: "CGPA", value: "8.25" },
+    { label: "CGPA", value: "8.40" },
     { label: "JEE Advanced", value: "Qualified" },
     { label: "SIH 2025", value: "Selected" },
     { label: "Projects", value: "4" },
