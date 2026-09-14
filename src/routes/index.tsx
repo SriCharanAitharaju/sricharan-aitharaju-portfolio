@@ -21,12 +21,12 @@ import {
   Send,
   Sparkles,
 } from "lucide-react";
-import portraitAsset from "@/assets/sricharan-profile-new.jpeg.asset.json";
+import portraitPhoto from "@/assets/updatedprofilephotoportfolio.jpeg";
 import { ChatWidget } from "@/components/ChatWidget";
 import { TiltCard, ParallaxLayer, NeuralBackground } from "@/components/InteractiveEffects";
 import { NameIntro } from "@/components/NameIntro";
 const resumeUrl = "https://drive.google.com/file/d/1J8blqYIfCdWulH8lvXGUX18DvsWH9o7D/view?usp=sharing";
-const portrait = portraitAsset.url;
+const portrait = portraitPhoto;
 
 export const Route = createFileRoute("/")({
   head: () => ({
