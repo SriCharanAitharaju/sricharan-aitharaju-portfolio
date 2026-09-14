@@ -26,7 +26,6 @@ export const sendContactMessage = createServerFn({ method: "POST" })
           name: data.name,
           email: data.email,
           message: data.message,
-ठ: undefined,
         }),
       });
       const json = (await res.json()) as { success?: boolean; message?: string };
