@@ -386,7 +386,7 @@ function Hero({ typed, goTo }: { typed: string; goTo: (id: string) => void }) {
           <ParallaxLayer depth={36}>
             <div className="glass-card animate-float absolute -right-2 top-4 rounded-xl px-3 py-2 text-[11px] sm:-right-4 sm:top-8 sm:px-4 sm:py-3 sm:text-xs">
               <div className="font-mono text-primary">CGPA</div>
-              <div className="text-base font-bold sm:text-lg">8.25</div>
+              <div className="text-base font-bold sm:text-lg">8.40</div>
             </div>
           </ParallaxLayer>
         </div>
